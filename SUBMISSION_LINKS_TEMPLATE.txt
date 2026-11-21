@@ -1,0 +1,12 @@
+PoRE — Smartphone as IoT
+
+Project description:
+Smartphone accelerometer/gyroscope telemetry transmitted to Firebase Cloud Firestore and visualized on a live web dashboard.
+
+GitHub source code: https://github.com/YOUR_USERNAME/PoRE-Smartphone-IoT
+Live web dashboard: https://YOUR_USERNAME.github.io/PoRE-Smartphone-IoT/dashboard.html
+Smartphone sender: https://YOUR_USERNAME.github.io/PoRE-Smartphone-IoT/phone.html
+
+Student: [your name]
+
+Note: Dashboard requires access to the dedicated demo account. Please request credentials privately. No passwords are included in this file.

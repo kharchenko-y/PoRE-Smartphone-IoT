@@ -1,0 +1,44 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // One authenticated Firebase account owns both the phone data and dashboard view.
+    match /devices/{userId}/readings/{readingId} {
+      allow get, list: if request.auth != null && request.auth.uid == userId;
+      allow create: if request.auth != null && request.auth.uid == userId
+        && request.resource.data.keys().hasOnly([
+          'source', 'ax', 'ay', 'az', 'gx', 'gy', 'gz', 'gyroAvailable', 'createdAt'
+        ])
+        && request.resource.data.keys().hasAll([
+          'source', 'ax', 'ay', 'az', 'gx', 'gy', 'gz', 'gyroAvailable', 'createdAt'
+        ])
+        && request.resource.data.source == 'smartphone-web-motion'
+        && request.resource.data.createdAt == request.time
+        && request.resource.data.ax is number
+        && request.resource.data.ay is number
+        && request.resource.data.az is number
+        && request.resource.data.ax >= -200 && request.resource.data.ax <= 200
+        && request.resource.data.ay >= -200 && request.resource.data.ay <= 200
+        && request.resource.data.az >= -200 && request.resource.data.az <= 200
+        && request.resource.data.gyroAvailable is bool
+        && (
+          (!request.resource.data.gyroAvailable
+            && request.resource.data.gx == null
+            && request.resource.data.gy == null
+            && request.resource.data.gz == null)
+          ||
+          (request.resource.data.gyroAvailable
+            && request.resource.data.gx is number
+            && request.resource.data.gy is number
+            && request.resource.data.gz is number
+            && request.resource.data.gx >= -3000 && request.resource.data.gx <= 3000
+            && request.resource.data.gy >= -3000 && request.resource.data.gy <= 3000
+            && request.resource.data.gz >= -3000 && request.resource.data.gz <= 3000)
+        );
+      allow update, delete: if false;
+    }
+    // No open access to unrelated collections.
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}
