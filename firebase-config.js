@@ -1,8 +1,5 @@
-// Firebase web client configuration for MADT-Lab6-WeatherMap.
-// Copied from the Firebase Web App registration screen provided in this conversation.
-// Client identifiers are public; security is enforced by Firebase Auth and Firestore Rules.
 export const firebaseConfig = {
-  apiKey: "AIzaSyCzJ5N8Vhzp8gij-F1uVbHyxp-oD0AAQcE",
+  apiKey: "AIzaSyCzJ5N8Vhzp8gij-F1uVbHvxp-oDO0AQcE",
   authDomain: "madt-lab6-weathermap.firebaseapp.com",
   projectId: "madt-lab6-weathermap",
   storageBucket: "madt-lab6-weathermap.firebasestorage.app",
