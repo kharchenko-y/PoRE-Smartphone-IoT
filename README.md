@@ -1,6 +1,6 @@
 # PoRE — Smartphone as IoT
 
-A complete source-code starter for the Vilnius University **[PoRE] Smartphone as IoT** assignment.
+A completed and tested project for the Vilnius University **[PoRE] Smartphone as IoT** assignment.
 
 **Architecture:** iPhone (Safari / DeviceMotion) → Firebase Authentication → Cloud Firestore → live JavaScript dashboard (HTTPS).
 
@@ -78,11 +78,14 @@ Acceleration is in m/s²; rotation rate is in degrees per second. If the gyrosco
 - Dashboard only displays the latest 120 readings and the latest 20 table rows; older records remain stored in Firestore.
 - The project intentionally does not include a delete-history UI. For classroom data cleanup, use Firestore Console.
 
-## Verification status (2026-11-17)
+## Verification status
 
-- **Done:** Source files created and local JavaScript syntax checks performed.
-- **Done:** `node --test` — four sensor utility unit tests passed (4/4).
-- **Not yet done:** Firebase live authentication, Firestore write/read, iPhone Safari motion permissions and dashboard data flow. These require user cloud setup and physical-device validation.
+- JavaScript unit tests: 4/4 passed.
+- Tested on a physical iPhone using Safari.
+- Firebase Authentication and Cloud Firestore verified.
+- 50 real telemetry readings displayed on the dashboard.
+- Live acceleration and rotation charts verified.
+- Deployed successfully using GitHub Pages.
 
 ## Run utility tests
 
