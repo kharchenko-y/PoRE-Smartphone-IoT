@@ -24,21 +24,19 @@ The browser on the phone collects real accelerometer and optional gyroscope read
 - `firebase-client.js`, `firebase-config.js`, `auth-ui.js` — Firebase SDK and authentication
 - `firestore.rules` — per-user database security rules (must be installed)
 - `styles.css` — responsive styles
-- `SETUP_RU.md` — detailed setup instructions in Russian
-- `TEST_CHECKLIST.md` — actual acceptance test / evidence checklist
 - `tests/` — pure JS unit tests
 
-## First run
+## Live demo
 
-1. Register a **Web app** in an existing or new Firebase project. The existing `MADT-Lab6-WeatherMap` project may be reused because it already has Firebase Email/Password enabled; use Firestore under a separate collection path.
-2. Create a Cloud Firestore database (Spark/free plan is sufficient for a short classroom demonstration). Start in production mode and apply all rules in `firestore.rules` under **Firestore Database > Rules**.
-3. Copy your **Web app Firebase config** into `firebase-config.js`. Do not use the Android `google-services.json` or a service account key.
-4. Put all root project files on GitHub Pages (public repository → Settings → Pages → Deploy from `main` / root). Wait for a working HTTPS URL.
-5. On the iPhone, open `https://YOURNAME.github.io/YOURREPO/phone.html` in **Safari**. Register a dedicated test account, then press **Allow sensors & start** and approve motion access.
-6. On the laptop, open `https://YOURNAME.github.io/YOURREPO/dashboard.html` and sign in with the **same account**. Move/tilt the phone and observe cloud readings and charts.
-7. Press Stop and capture screenshots of both the phone sender and dashboard showing real values. Optional: show Firestore documents in Firebase Console.
+- [Project website](https://kharchenko-y.github.io/PoRE-Smartphone-IoT/)
+- [Phone sender](https://kharchenko-y.github.io/PoRE-Smartphone-IoT/phone.html) — open in Safari on an iPhone
+- [Live dashboard](https://kharchenko-y.github.io/PoRE-Smartphone-IoT/dashboard.html) — view readings and charts
 
-The dashboard is intentionally not public without authentication. To let a lecturer inspect the live data, use a dedicated demo account and share its temporary credentials privately (not in a public GitHub repository). The dashboard's authenticated account must match the sender's account.
+Sign in to the sender and dashboard with the **same Firebase Email/Password account**. The dashboard is intentionally private: readings are visible only to the account that generated them. For a live classroom demonstration, provide dedicated demo-account credentials privately, never in this repository.
+
+## Development and deployment
+
+The site uses plain HTML/CSS/JavaScript with Firebase's modular SDK loaded from Google's CDN. GitHub Pages deploys the `main` branch over HTTPS. The Firebase Web configuration is in `firebase-config.js`; access to telemetry is controlled by Firebase Authentication and the rules in `firestore.rules`.
 
 ## Data schema
 
@@ -74,7 +72,7 @@ Acceleration is in m/s²; rotation rate is in degrees per second. If the gyrosco
 - The web app **requires HTTPS** to read motion sensors.
 - iOS Safari asks for motion permissions after a user click. Certain embedded browsers block motion APIs.
 - Browsers cannot reliably collect motion in the background, so data collection deliberately stops when hidden.
-- Cloud services, GitHub Pages and their permissions must be configured before end-to-end tests can pass.
+- Live operation requires the configured Firebase project, available cloud services, and access to the appropriate test account.
 - Dashboard only displays the latest 120 readings and the latest 20 table rows; older records remain stored in Firestore.
 - The project intentionally does not include a delete-history UI. For classroom data cleanup, use Firestore Console.
 
