@@ -1,5 +1,5 @@
 export const firebaseConfig = {
-  apiKey: "AIzaSyCzJ5N8Vhzp8gij-F1uVbHvxp-oD00AQcE",
+  apiKey: "AIzaSyAEHTCtpY25ihTRRiu7BQA_E5OkpnfO0uE",
   authDomain: "madt-lab6-weathermap.firebaseapp.com",
   projectId: "madt-lab6-weathermap",
   storageBucket: "madt-lab6-weathermap.firebasestorage.app",
